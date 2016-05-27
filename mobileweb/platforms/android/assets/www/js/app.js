@@ -14,6 +14,9 @@ angular.module('venteritoryApp', [
                     }).when('/register', {
                         templateUrl: 'views/registration.html',
                         controller: 'LoginCtrl'
+                    }).when('/addBC', {
+                        templateUrl: 'views/viewPerson.html',
+                        controller: 'LoginCtrl'
                     });
             $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
         })
@@ -22,12 +25,13 @@ angular.module('venteritoryApp', [
             $scope.username = '';
             $scope.password = '';
             $scope.login = function () {
-                var req = $http.post('http://sakula6440.ventera.com:8080/login');
-                req.then(function (response) {
-                    $scope.message = response;
-                }).catch(function (response) {
-                    console.error('Error: ' + response.status + " : " + response.data);
-                });
+                //var req = $http.post('http://sakula6440.ventera.com:8080/login');
+                //req.then(function (response) {
+                  //  $scope.message = response;
+                    $location.path = '#/addBC';
+                //}).catch(function (response) {
+                  //  console.error('Error: ' + response.status + " : " + response.data);
+                //});
             };
         })
         .controller("cameraController", function ($scope, $routeParams, dataService, Camera) {
